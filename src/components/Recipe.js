@@ -6,6 +6,7 @@ import api from '../api';
 
 const Recipe = (props) => {
   let params = useParams();
+  let history = useHistory();
   const [recipe, setRecipe] = useState({ingredients:""});
 
   useEffect(()=>{
@@ -29,7 +30,7 @@ const Recipe = (props) => {
   const deleteRecipe = () => {
     api.delete(`recipes/destroy/${params.id}`)
     .then((res)=>{
-
+      history.push(`/recipes`);
     })
     .catch(err=>{
       console.warn(err);

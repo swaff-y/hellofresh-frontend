@@ -1,32 +1,51 @@
 import React, {useEffect, useState} from 'react';
+import { useHistory, useParams } from "react-router-dom";
 import {Link} from "react-router-dom";
 import "./newRecipe.css";
+import api from '../api';
 
 const NewRecipe = (props) => {
+  let params = useParams();
+  let history = useHistory();
   const [name,setName] = useState();
   const [ingredients,setIngredients] = useState();
   const [instruction,setInstruction] = useState();
+  const [formDetails, setFormDetails] = useState({
+  name:"",
+  ingredients: "",
+  instruction:""
+})
 
   const onChangeName = (e) => {
     setName(e.target.value);
+    const newFormDetails = formDetails;
+    newFormDetails.name = e.target.value;
+    setFormDetails(newFormDetails);
   }
 
   const onChangeIngredients = (e) => {
     setIngredients(e.target.value);
+    const newFormDetails = formDetails;
+    newFormDetails.ingredients = e.target.value;
+    setFormDetails(newFormDetails);
   }
 
   const onChangeInstruction = (e) => {
     setInstruction(e.target.value);
-  }
-  
-  const onSubmit = (e) => {
-    e.preventDefault();
+    const newFormDetails = formDetails;
+    newFormDetails.instruction = e.target.value;
+    setFormDetails(newFormDetails);
   }
 
-  const stripHtmlEntities = (str) => {
-    return String(str)
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+  const onSubmit = (e) => {
+    e.preventDefault();
+    api.post(`recipes/create`,formDetails)
+    .then((res)=>{
+      history.push(`/recipes`);
+    })
+    .catch(err=>{
+      console.warn(err);
+    })
   }
 
   return(
