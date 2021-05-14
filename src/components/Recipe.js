@@ -26,6 +26,16 @@ const Recipe = (props) => {
       .replace(/&gt;/g, ">");
   }
 
+  const deleteRecipe = () => {
+    api.delete(`recipes/destroy/${params.id}`)
+    .then((res)=>{
+
+    })
+    .catch(err=>{
+      console.warn(err);
+    })
+  }
+
   // console.log("the recipe:", recipe.ingredients.split(", "));
 
   const recipeInstruction = addHtmlEntities(recipe.instruction);
@@ -72,7 +82,7 @@ const Recipe = (props) => {
             />
           </div>
           <div className="col-sm-12 col-lg-2">
-            <button type="button" className="btn btn-danger">
+            <button type="button" className="btn btn-danger" onClick={deleteRecipe}>
               Delete Recipe
             </button>
           </div>
