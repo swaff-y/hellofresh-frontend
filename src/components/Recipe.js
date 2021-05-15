@@ -6,6 +6,7 @@ import api from '../api';
 
 const Recipe = (props) => {
   let params = useParams();
+  const page = params.page;
   let history = useHistory();
   const [recipe, setRecipe] = useState({ingredients:""});
 
@@ -88,7 +89,7 @@ const Recipe = (props) => {
             </button>
           </div>
         </div>
-        <Link to="/recipes" className="btn btn-link">
+        <Link to={`/recipes/${page}`} className="btn btn-link">
           Back to recipes
         </Link>
       </div>

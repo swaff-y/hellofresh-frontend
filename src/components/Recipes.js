@@ -68,7 +68,7 @@ const Recipes = (props) => {
                     />
                     <div className="card-body">
                       <h5 className="card-title">{recipe.name}</h5>
-                      <Link to={`/recipe/${recipe.id}`} className="btn custom-button">
+                      <Link to={`/recipe/${recipe.id}/${currentPage}`} className="btn custom-button">
                         View Recipe
                       </Link>
                     </div>
@@ -85,8 +85,9 @@ const Recipes = (props) => {
         </div>
         <div className="recipes__pagination">
         <Link to={previous} className="btn btn-link">
-          Prevoius Page
+          Previous Page
         </Link>
+        <span>Showing Page {currentPage} of {pages}</span>
         <Link to={next} className="btn btn-link">
           Next Page
         </Link>
