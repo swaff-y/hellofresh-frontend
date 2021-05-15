@@ -12,13 +12,28 @@ const Home = (props) => {
             A curated list of recipes for the best homemade meal and delicacies.
           </p>
           <hr className="my-4" />
-          <Link
-            to="/recipes/1"
-            className="btn btn-lg custom-button"
-            role="button"
-          >
-            View Recipes
-          </Link>
+          <div className="container">
+            <div className="row">
+              <div className="col">
+                <Link
+                  to="/recipes/1"
+                  className="col btn btn-lg custom-button"
+                  role="button"
+                >
+                  View Recipes
+                </Link>
+              </div>
+              <div className="col" >
+                <Link
+                  to="/weeks/1"
+                  className="col btn btn-lg custom-button"
+                  role="button"
+                >
+                  View weekly Menu
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -3,20 +3,20 @@ import { useHistory, useParams } from "react-router-dom";
 import {Helmet} from 'react-helmet';
 import {Link} from "react-router-dom";
 import api from '../api';
-import "./recipes.css";
+import "./weeks.css";
 
-const Recipes = (props) => {
+const Weeks = (props) => {
   const params = useParams();
   let history = useHistory();
   let currentPage = params.page;
-  const [recipes, setRecipes] = useState([]);
+  const [weeks, setWeeks] = useState([]);
   const [pages, setPages] = useState(0);
 
   useEffect(()=>{
-    api.get(`recipes/index/${params.page}`)
+    api.get(`weeks/index/${params.page}`)
     .then((res)=>{
       // console.log(res.data);
-      setRecipes(res.data);
+      setWeeks(res.data);
       setPages(res.data[0].total_pages);
       // checkPageNumber()
     })
@@ -27,15 +27,15 @@ const Recipes = (props) => {
 
   const next = () => {
     if((parseInt(currentPage) + 1) <= pages){
-      return "/recipes/" + (parseInt(currentPage) + 1)
+      return "/weeks/" + (parseInt(currentPage) + 1)
     }
-    return "/recipes/" + (parseInt(currentPage))
+    return "/weeks/" + (parseInt(currentPage))
   }
   const previous = () => {
     if((parseInt(currentPage) - 1) !== 0){
-      return "/recipes/" + (parseInt(currentPage) - 1)
+      return "/weeks/" + (parseInt(currentPage) - 1)
     }
-    return "/recipes/" + (parseInt(currentPage))
+    return "/weeks/" + (parseInt(currentPage))
   }
 
   // const checkPageNumber = () => {
@@ -47,10 +47,10 @@ const Recipes = (props) => {
 
 
   return(
-    <div className="" data-test="component-recipes">
+    <div className="" data-test="component-weeks">
       <Helmet>
-        <title>Hello Fresh - Recipes</title>
-        <meta name="description" content="Hello Fresh Recipes" />
+        <title>Hello Fresh - Weekly Menu</title>
+        <meta name="description" content="Hello Fresh Weekly menu" />
       </Helmet>
       <section className="jumbotron jumbotron-fluid text-center">
       <div className="container py-5">
@@ -65,26 +65,26 @@ const Recipes = (props) => {
       <div className="py-5">
       <main className="container">
         <div className="text-right mb-3">
-          <Link to={"/recipe/" + params.page} className="btn custom-button">
-            Create New Recipe
+          <Link to="/recipe" className="btn custom-button">
+            Create New Week
           </Link>
         </div>
         <div className="row">
           {
-              recipes.length > 0
+              weeks.length > 0
               ?
-              recipes.map((recipe, index) => (
+              weeks.map((week, index) => (
                 <div key={index} className="col-md-6 col-lg-4">
                   <div className="card mb-4">
                     <img
-                      src={recipe.image}
+                      src={week.image}
                       className="card-img-top"
-                      alt={`${recipe.name} image`}
+                      alt={`${week.name} image`}
                     />
                     <div className="card-body">
-                      <h5 className="card-title">{recipe.name}</h5>
-                      <Link to={`/recipe/${recipe.id}/${currentPage}`} className="btn custom-button">
-                        View Recipe
+                      <h5 className="card-title">{week.name}</h5>
+                      <Link to={`/recipe/${week.id}/${currentPage}`} className="btn custom-button">
+                        View Week
                       </Link>
                     </div>
                   </div>
@@ -93,12 +93,12 @@ const Recipes = (props) => {
               :
               <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">
                 <h4>
-                  No recipes yet. Why not <Link to="/recipe">create one</Link>
+                  No menus yet. Why not <Link to="/new_recipe">create one</Link>
                 </h4>
               </div>
           }
         </div>
-        <div className="recipes__pagination">
+        <div className="weeks__pagination">
         <Link to={previous} className="btn btn-link">
           Previous Page
         </Link>
@@ -116,4 +116,4 @@ const Recipes = (props) => {
   )
 }
 
-export default Recipes;
+export default Weeks;

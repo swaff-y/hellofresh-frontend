@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import { useHistory, useParams } from "react-router-dom";
+import {Helmet} from 'react-helmet';
 import {Link} from "react-router-dom";
 import "./newRecipe.css";
 import api from '../api';
 
 const NewRecipe = (props) => {
   let params = useParams();
+  const pageLink = "/recipes/" + params.page;
   let history = useHistory();
   const [name,setName] = useState();
   const [ingredients,setIngredients] = useState();
@@ -50,6 +52,10 @@ const NewRecipe = (props) => {
 
   return(
     <div className="container mt-5" data-test="componenet-newRecipe">
+      <Helmet>
+        <title>Add a new recipe</title>
+        <meta name="description" content="Hello Fresh New Recipes" />
+      </Helmet>
       <div className="row">
         <div className="col-sm-12 col-lg-6 offset-lg-3">
           <h1 className="font-weight-normal mb-5">
@@ -93,7 +99,7 @@ const NewRecipe = (props) => {
             <button type="submit" className="btn custom-button mt-3">
               Create Recipe
             </button>
-            <Link to="/recipes" className="btn btn-link mt-3">
+            <Link to={pageLink} className="btn btn-link mt-3">
               Back to recipes
             </Link>
           </form>
