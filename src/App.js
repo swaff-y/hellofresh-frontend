@@ -6,6 +6,7 @@ import Recipe from "./components/Recipe";
 import NewRecipe from "./components/NewRecipe";
 import NewWeek from "./components/NewWeek";
 import Weeks from "./components/Weeks";
+import Week from "./components/Week";
 import './App.css';
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/recipes/:page" exact component={Recipes} />
           <Route path="/weeks/:page" exact component={Weeks} />
           <Route path="/recipe/:id/:page" exact component={Recipe} />
+          <Route path="/week/:id/:page" exact component={Week} />
           <Route path="/recipe/:page" exact component={NewRecipe} />
           <Route path="/week/:page" exact component={NewWeek} />
         </Switch>
