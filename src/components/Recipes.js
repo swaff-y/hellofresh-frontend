@@ -1,21 +1,39 @@
 import React, {useEffect, useState} from 'react';
+import { useHistory, useParams } from "react-router-dom";
 import {Link} from "react-router-dom";
 import api from '../api';
 import "./recipes.css";
 
 const Recipes = (props) => {
+  const params = useParams();
+  const currentPage = params.page;
   const [recipes, setRecipes] = useState([]);
+  const [pages, setPages] = useState(0);
 
   useEffect(()=>{
-    api.get(`recipes/index`)
+    api.get(`recipes/index/${params.page}`)
     .then((res)=>{
-      console.log(res.data);
+      // console.log(res.data);
       setRecipes(res.data);
+      setPages(res.data[0].total_pages);
     })
     .catch(err=>{
       console.warn(err);
     })
-  },[])
+  },[params])
+
+  const next = () => {
+    if((parseInt(currentPage) + 1) <= pages){
+      return "/recipes/" + (parseInt(currentPage) + 1)
+    }
+    return "/recipes/" + (parseInt(currentPage))
+  }
+  const previous = () => {
+    if((parseInt(currentPage) - 1) !== 0){
+      return "/recipes/" + (parseInt(currentPage) - 1)
+    }
+    return "/recipes/" + (parseInt(currentPage))
+  }
 
   return(
     <div className="" data-test="component-recipes">
@@ -64,6 +82,14 @@ const Recipes = (props) => {
                 </h4>
               </div>
           }
+        </div>
+        <div className="recipes__pagination">
+        <Link to={previous} className="btn btn-link">
+          Prevoius Page
+        </Link>
+        <Link to={next} className="btn btn-link">
+          Next Page
+        </Link>
         </div>
         <Link to="/" className="btn btn-link">
           Home
