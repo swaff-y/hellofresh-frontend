@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import { useHistory, useParams } from "react-router-dom";
+import {Helmet} from 'react-helmet';
 import {Link} from "react-router-dom";
 import api from '../api';
 import "./recipes.css";
 
 const Recipes = (props) => {
   const params = useParams();
-  const currentPage = params.page;
+  let history = useHistory();
+  let currentPage = params.page;
   const [recipes, setRecipes] = useState([]);
   const [pages, setPages] = useState(0);
 
@@ -16,6 +18,7 @@ const Recipes = (props) => {
       // console.log(res.data);
       setRecipes(res.data);
       setPages(res.data[0].total_pages);
+      checkPageNumber()
     })
     .catch(err=>{
       console.warn(err);
@@ -35,8 +38,20 @@ const Recipes = (props) => {
     return "/recipes/" + (parseInt(currentPage))
   }
 
+  const checkPageNumber = () => {
+    if(currentPage > pages){
+      currentPage = 1;
+      history.push(`/recipes/1`)
+    }
+  }
+
+
   return(
     <div className="" data-test="component-recipes">
+      <Helmet>
+        <title>Hello Fresh - Recipes</title>
+        <meta name="description" content="Hello Fresh Recipes" />
+      </Helmet>
       <section className="jumbotron jumbotron-fluid text-center">
       <div className="container py-5">
         <h1 className="display-4">Recipes for every occasion</h1>

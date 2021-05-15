@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useHistory, useParams } from "react-router-dom";
+import {Helmet} from 'react-helmet';
 import {Link} from "react-router-dom";
 import "./recipe.css";
 import api from '../api';
@@ -9,11 +10,13 @@ const Recipe = (props) => {
   const page = params.page;
   let history = useHistory();
   const [recipe, setRecipe] = useState({ingredients:""});
+  const title = `${recipe.name}`;
+  const description = `${recipe.name} - ${recipe.instruction}`;
 
   useEffect(()=>{
     api.get(`recipes/show/${params.id}`)
     .then((res)=>{
-      console.log(res.data);
+      // console.log(res.data);
       const data = res.data
       setRecipe(data);
     })
@@ -31,7 +34,7 @@ const Recipe = (props) => {
   const deleteRecipe = () => {
     api.delete(`recipes/destroy/${params.id}`)
     .then((res)=>{
-      history.push(`/recipes`);
+      history.push(`/recipes/${params.page}`);
     })
     .catch(err=>{
       console.warn(err);
@@ -44,6 +47,10 @@ const Recipe = (props) => {
 
   return(
     <div className="" data-test="component-recipe">
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content="Hello Fresh Recipes" />
+      </Helmet>
       <div className="hero position-relative d-flex align-items-center justify-content-center">
         <img
           src={recipe.image}
