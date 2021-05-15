@@ -93,7 +93,7 @@ const Recipes = (props) => {
               :
               <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">
                 <h4>
-                  No recipes yet. Why not <Link to="/recipe">create one</Link>
+                  No recipes yet. Why not <Link to={"/recipe/" + params.page}>create one</Link>
                 </h4>
               </div>
           }

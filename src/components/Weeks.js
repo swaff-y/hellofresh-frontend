@@ -54,18 +54,16 @@ const Weeks = (props) => {
       </Helmet>
       <section className="jumbotron jumbotron-fluid text-center">
       <div className="container py-5">
-        <h1 className="display-4">Recipes for every occasion</h1>
+        <h1 className="display-4">A weekly menu based on your selections</h1>
         <p className="lead text-muted">
-          We’ve pulled together our most popular recipes, our latest
-          additions, and our editor’s picks, so there’s sure to be something
-          tempting for you to try.
+          We've added your favourite recipes to your weekly menus. Check them out below.
         </p>
       </div>
       </section>
       <div className="py-5">
       <main className="container">
         <div className="text-right mb-3">
-          <Link to="/recipe" className="btn custom-button">
+          <Link to={"/week/" + params.page} className="btn custom-button">
             Create New Week
           </Link>
         </div>
@@ -76,14 +74,10 @@ const Weeks = (props) => {
               weeks.map((week, index) => (
                 <div key={index} className="col-md-6 col-lg-4">
                   <div className="card mb-4">
-                    <img
-                      src={week.image}
-                      className="card-img-top"
-                      alt={`${week.name} image`}
-                    />
                     <div className="card-body">
                       <h5 className="card-title">{week.name}</h5>
-                      <Link to={`/recipe/${week.id}/${currentPage}`} className="btn custom-button">
+                      <p className="card-text">The menu for week {week.number}</p>
+                      <Link to={`/week/${week.id}/${currentPage}`} className="btn custom-button">
                         View Week
                       </Link>
                     </div>
@@ -93,7 +87,7 @@ const Weeks = (props) => {
               :
               <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">
                 <h4>
-                  No menus yet. Why not <Link to="/new_recipe">create one</Link>
+                  No menus yet. Why not <Link to={"/week/" + params.page}>create one</Link>
                 </h4>
               </div>
           }
