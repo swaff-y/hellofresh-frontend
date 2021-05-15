@@ -43,7 +43,7 @@ const NewRecipe = (props) => {
     e.preventDefault();
     api.post(`recipes/create`,formDetails)
     .then((res)=>{
-      history.push(`/recipes`);
+      history.push(`/recipes/1`);
     })
     .catch(err=>{
       console.warn(err);
