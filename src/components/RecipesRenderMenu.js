@@ -15,7 +15,7 @@ const RecipesRenderMenu = (props) => {
   items.splice(result.destination.index, 0, reorderedItem);
 
   // for( let i = 0; i < items.length; i++ ){
-  //   api.post(`task-priority-update/${items[i].id}/${i+1}`)
+  //   api.post(`recipe-priority-update/${items[i].id}/${i+1}`)
   //   .then(res=>{
   //     // console.log("The return: ",res.data, "The item: ", items[i]);
   //   })
@@ -23,7 +23,7 @@ const RecipesRenderMenu = (props) => {
   //     console.warn(err);
   //   })
   // }
-  //
+
   props.handleRecipeChange(items);
 }
 

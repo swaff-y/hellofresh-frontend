@@ -54,8 +54,8 @@ const Week = (props) => {
     })
   }
 
-  const handleRecipeChange = () => {
-
+  const handleRecipeChange = (data) => {
+    setRecipes(data)
   }
 
   // console.log("the recipe:", recipe.ingredients.split(", "));
@@ -85,6 +85,9 @@ const Week = (props) => {
             <button type="button" className="btn btn-danger" onClick={deleteWeek}>
               Delete week
             </button>
+          </div>
+          <div className="col">
+            <h3>Drag and drop to organise your menu for the week</h3>
           </div>
         </div>
         <div className="row week__recipes">
