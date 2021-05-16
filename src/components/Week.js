@@ -77,7 +77,14 @@ const Week = (props) => {
       </div>
       <div className="container py-5">
         <div className="row">
-          <div className="col-sm-12 col-lg-7">
+          <div className="col-sm-12 col-lg-2">
+            <button type="button" className="btn btn-danger" onClick={deleteWeek}>
+              Delete week
+            </button>
+          </div>
+        </div>
+        <div className="row week__recipes">
+          <div className="col">
             <h5 className="mb-2">Recipes</h5>
             <div className="container">
             <RecipesRender
@@ -87,11 +94,6 @@ const Week = (props) => {
               type="menu"
             />
             </div>
-          </div>
-          <div className="col-sm-12 col-lg-2">
-            <button type="button" className="btn btn-danger" onClick={deleteWeek}>
-              Delete week
-            </button>
           </div>
         </div>
         <Link to={`/weeks/${page}`} className="btn btn-link">

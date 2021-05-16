@@ -18,7 +18,13 @@ const RecipesRender = (props) => {
                 alt={`${recipe.name} image`}
               />
               <div className="card-body">
-                <h5 className="card-title">{recipe.name}</h5>
+                {
+                  props.type === "menu"
+                  ?
+                  <h5 className="card-title">{recipe.name} - Day 1</h5>
+                  :
+                  <h5 className="card-title">{recipe.name}</h5>
+                }
                 <Link to={`/recipe/${recipe.id}/${props.currentPage}`} className="btn custom-button">
                   View Recipe
                 </Link>
