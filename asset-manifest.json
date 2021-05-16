@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/hellofresh-frontend/static/css/main.f7719d3a.chunk.css",
+    "main.js": "/hellofresh-frontend/static/js/main.54b631fc.chunk.js",
+    "main.js.map": "/hellofresh-frontend/static/js/main.54b631fc.chunk.js.map",
+    "runtime-main.js": "/hellofresh-frontend/static/js/runtime-main.b7f8cf82.js",
+    "runtime-main.js.map": "/hellofresh-frontend/static/js/runtime-main.b7f8cf82.js.map",
+    "static/css/2.150d169a.chunk.css": "/hellofresh-frontend/static/css/2.150d169a.chunk.css",
+    "static/js/2.a1d91be6.chunk.js": "/hellofresh-frontend/static/js/2.a1d91be6.chunk.js",
+    "static/js/2.a1d91be6.chunk.js.map": "/hellofresh-frontend/static/js/2.a1d91be6.chunk.js.map",
+    "static/js/3.831349c0.chunk.js": "/hellofresh-frontend/static/js/3.831349c0.chunk.js",
+    "static/js/3.831349c0.chunk.js.map": "/hellofresh-frontend/static/js/3.831349c0.chunk.js.map",
+    "index.html": "/hellofresh-frontend/index.html",
+    "static/css/2.150d169a.chunk.css.map": "/hellofresh-frontend/static/css/2.150d169a.chunk.css.map",
+    "static/css/main.f7719d3a.chunk.css.map": "/hellofresh-frontend/static/css/main.f7719d3a.chunk.css.map",
+    "static/js/2.a1d91be6.chunk.js.LICENSE.txt": "/hellofresh-frontend/static/js/2.a1d91be6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b7f8cf82.js",
+    "static/css/2.150d169a.chunk.css",
+    "static/js/2.a1d91be6.chunk.js",
+    "static/css/main.f7719d3a.chunk.css",
+    "static/js/main.54b631fc.chunk.js"
+  ]
+}
