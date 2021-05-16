@@ -12,7 +12,7 @@ import './App.css';
 const App = () => {
   return (
     <div className="App" data-test="component-app">
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/recipes/:page" exact component={Recipes} />
