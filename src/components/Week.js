@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useHistory, useParams } from "react-router-dom";
 import {Helmet} from 'react-helmet';
 import {Link} from "react-router-dom";
+import RecipesRender from './RecipesRender'
 import "./week.css";
 import api from '../api';
 
@@ -17,7 +18,7 @@ const Week = (props) => {
   useEffect(()=>{
     api.get(`weeks/show/${params.id}`)
     .then((res)=>{
-      console.log(res.data);
+      // console.log(res.data);
       setWeek(res.data);
 
       api.get(`recipes/week/${params.id}`)
@@ -79,35 +80,12 @@ const Week = (props) => {
           <div className="col-sm-12 col-lg-7">
             <h5 className="mb-2">Recipes</h5>
             <div className="container">
-              <div className="row">
-                {
-                    recipes.length > 0
-                    ?
-                    recipes.map((recipe, index) => (
-                      <div key={index} className="col-md-6 col-lg-4">
-                        <div className="card mb-4">
-                          <img
-                            src={recipe.image}
-                            className="card-img-top"
-                            alt={`${recipe.name} image`}
-                          />
-                          <div className="card-body">
-                            <h5 className="card-title">{recipe.name}</h5>
-                            <Link to={`/recipe/${recipe.id}/${page}`} className="btn custom-button">
-                              View Recipe
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    ))
-                    :
-                    <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">
-                      <h4>
-                        No recipes yet. Why not <Link to={"/recipes/1"}>add one</Link>
-                      </h4>
-                    </div>
-                }
-              </div>
+            <RecipesRender
+              recipes={recipes}
+              currentPage={1}
+              params={{page:"1"}}
+              type="menu"
+            />
             </div>
           </div>
           <div className="col-sm-12 col-lg-2">

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useHistory, useParams } from "react-router-dom";
 import {Helmet} from 'react-helmet';
 import {Link} from "react-router-dom";
+import RecipesRender from './RecipesRender'
 import api from '../api';
 import "./recipes.css";
 
@@ -69,35 +70,12 @@ const Recipes = (props) => {
             Create New Recipe
           </Link>
         </div>
-        <div className="row">
-          {
-              recipes.length > 0
-              ?
-              recipes.map((recipe, index) => (
-                <div key={index} className="col-md-6 col-lg-4">
-                  <div className="card mb-4">
-                    <img
-                      src={recipe.image}
-                      className="card-img-top"
-                      alt={`${recipe.name} image`}
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">{recipe.name}</h5>
-                      <Link to={`/recipe/${recipe.id}/${currentPage}`} className="btn custom-button">
-                        View Recipe
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))
-              :
-              <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">
-                <h4>
-                  No recipes yet. Why not <Link to={"/recipe/" + params.page}>create one</Link>
-                </h4>
-              </div>
-          }
-        </div>
+        <RecipesRender
+          recipes={recipes}
+          currentPage={currentPage}
+          params={params}
+          type="display"
+        />
         <div className="recipes__pagination">
         <Link to={previous} className="btn btn-link">
           Previous Page

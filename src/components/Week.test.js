@@ -1,8 +1,6 @@
-import Enzyme, { shallow } from 'enzyme';
-import EnzymeAdapter from '@wojtekmaj/enzyme-adapter-react-17';
+import { shallow } from 'enzyme';
+import {findByTestAttr} from '../testUtils'
 import Week from './Week';
-
-Enzyme.configure({adapter: new EnzymeAdapter() });
 
 /**
   *Factory function to create a ShallowWrapper for the Congrats component
@@ -13,8 +11,6 @@ Enzyme.configure({adapter: new EnzymeAdapter() });
 const setup = (props={}) => {
   return shallow(<Week/>);
 }
-
-const findByTestAttr = (wrapper, val) => wrapper.find(`[data-test='${val}']`)
 
 test('renders without error', () => {
   const wrapper = setup();
