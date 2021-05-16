@@ -72,7 +72,7 @@ const Recipes = (props) => {
         </div>
         <RecipesRender
           recipes={recipes}
-          currentPage={currentPage}
+          currentPage={parseInt(currentPage)}
           params={params}
           type="display"
         />

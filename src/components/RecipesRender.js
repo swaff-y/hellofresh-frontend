@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
+import DropdownButton from './DropdownButton';
 import "./recipesRender.css";
+import api from '../api';
 
 const RecipesRender = (props) => {
+
   return(
     <div className="row" data-test="component-recipesRender">
     {
@@ -25,9 +28,26 @@ const RecipesRender = (props) => {
                   :
                   <h5 className="card-title">{recipe.name}</h5>
                 }
-                <Link to={`/recipe/${recipe.id}/${props.currentPage}`} className="btn custom-button">
-                  View Recipe
-                </Link>
+                <div className="container">
+                  <div className="row">
+                    {
+                      props.type === "menu"
+                      ?
+                      <Link to={`/recipe/${recipe.id}/${props.currentPage}`} className="btn custom-button col">
+                        View Recipe
+                      </Link>
+                      :
+                      <div className="container px-1">
+                        <div className="row g-1">
+                          <Link to={`/recipe/${recipe.id}/${props.currentPage}`} className="btn custom-button col recipesRender__button">
+                            View Recipe
+                          </Link>
+                          <DropdownButton recipeId={recipe.id}/>
+                        </div>
+                      </div>
+                    }
+                  </div>
+                </div>
               </div>
             </div>
           </div>
