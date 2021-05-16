@@ -45,7 +45,7 @@ const DropdownButton = (props) => {
             <Dropdown.Item
               key={index} onClick={()=>handleClick(week.id,props.recipeId)}
             >
-              {week.name} for {week.number}
+              {week.name} for week {week.number}
             </Dropdown.Item>
           )
         }
