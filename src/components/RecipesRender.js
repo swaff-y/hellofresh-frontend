@@ -24,7 +24,7 @@ const RecipesRender = (props) => {
                 {
                   props.type === "menu"
                   ?
-                  <h5 className="card-title">{recipe.name} - Day 1</h5>
+                  <h5 className="card-title">{recipe.name} - Day {index + 1}</h5>
                   :
                   <h5 className="card-title">{recipe.name}</h5>
                 }
