@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useHistory, useParams } from "react-router-dom";
 import {Helmet} from 'react-helmet';
 import {Link} from "react-router-dom";
-import RecipesRender from './RecipesRender'
+import RecipesRenderMenu from './RecipesRenderMenu'
 import "./week.css";
 import api from '../api';
 
@@ -54,6 +54,10 @@ const Week = (props) => {
     })
   }
 
+  const handleRecipeChange = () => {
+
+  }
+
   // console.log("the recipe:", recipe.ingredients.split(", "));
 
   // const recipeInstruction = addHtmlEntities(recipe.instruction);
@@ -87,11 +91,12 @@ const Week = (props) => {
           <div className="col">
             <h5 className="mb-2">Recipes</h5>
             <div className="container">
-            <RecipesRender
+            <RecipesRenderMenu
               recipes={recipes}
               currentPage={1}
               params={{page:"1"}}
               type="menu"
+              handleRecipeChange={handleRecipeChange}
             />
             </div>
           </div>
