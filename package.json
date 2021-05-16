@@ -1,6 +1,6 @@
 {
   "name": "hellofresh",
-  "homepage": "https://swaff-y.github.io/hellofresh-frontend/",
+  "homepage": "https://swaff-y.github.io/hellofresh-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
