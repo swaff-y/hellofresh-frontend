@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import DropdownButton from './DropdownButton';
 import "./recipesRender.css";
 import api from '../api';
@@ -62,12 +62,5 @@ const RecipesRender = (props) => {
     </div>
   )
 }
-
-RecipesRender.propTypes = {
-  recipes: PropTypes.array.isRequired,
-  currentPage: PropTypes.number.isRequired,
-  params: PropTypes.object.isRequired,
-  type: PropTypes.string.isRequired,
-};
 
 export default RecipesRender;
